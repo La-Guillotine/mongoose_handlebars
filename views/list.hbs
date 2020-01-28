@@ -1,0 +1,21 @@
+<table class="users-list">
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+      <tr onclick="window.location.href='/details/{{this.id}}'">
+        <td>{{this.firstName}}</td>
+        <td>{{this.lastName}}</td>
+        <td><a href="/delete/{{this.id}}">X</a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<div class="commands">
+  <a href="/add">Add a new user</a>
+</div>

@@ -1,0 +1,50 @@
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.users-list {
+  border-spacing: 0;
+  width: 100%;
+}
+
+.users-list thead th {
+  text-align: left;
+}
+
+.users-list tbody tr:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.users-list th,
+.users-list td {
+  border: none;
+  padding: 5px;
+  margin: 0;
+}
+
+.commands {
+  margin: 10px auto;
+}
+
+form .field {
+  margin-bottom: 10px;
+}
+
+form .field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form .field input {
+  box-sizing: border-box;
+  padding: 5px;
+  width: 100%;
+}
+
+form .commands button {
+  padding: 10px 15px;
+  cursor: pointer;
+}

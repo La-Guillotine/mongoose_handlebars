@@ -1,8 +1,8 @@
 const express = require('express');
-
 const router = express.Router();
 
 module.exports = (controller) => {
+  search = false;
   router.get('/', (req, res) => {
     controller.getAll().then((users) => {
       res.render('list', {
@@ -43,6 +43,18 @@ module.exports = (controller) => {
     const id = req.params.id;
     controller.delete(id).then(() => {
       res.redirect('/');
+    });
+  });
+
+  router.post('/search', (req,res) =>{
+    let name = req.body.name;
+    let search = true;
+    console.log(name);
+    controller.getByName(name).then((users) => {
+      res.render('list', {
+        users,
+        search
+      });
     });
   });
 

@@ -19,6 +19,11 @@ module.exports = class UsersController {
     return User.findById(id).then(user =>user.toObject());
   }
 
+  getByName(name){
+    console.log(name);
+    return User.find({lastName : name}).then(users => users.map(user => user.toObject()));
+  }
+
   create(user) {
     return User.create(user).then(u => u.toObject());
   }

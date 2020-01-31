@@ -31,4 +31,9 @@ module.exports = class UsersController {
   delete(id) {
     return User.findById(id).then(user => user.remove());
   }
+
+  edit(user){
+    return User.findByIdAndUpdate(user.id, {lastName:user.lastName, firstName:user.firstName, email:user.email})
+    .then(u => u.toObject());
+  }
 }

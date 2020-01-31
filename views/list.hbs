@@ -1,10 +1,10 @@
 <form method="post" action="/search">
-  <label for="search-user">Rechercher un utilisateur : </label>
+  <label for="search-user">Search user : </label>
   <input type="search" id="search-user" name="name" aria-label="Search through site content"/>
   <input type="submit" name="Search" value="Rechercher"/>
 </form>
 {{#if search}}
-  <a href="/">Annuler recherche</a>
+  <a href="/">Cancel search</a>
 {{/if}}
 <table class="users-list">
   <thead>
@@ -19,7 +19,7 @@
       <tr onclick="window.location.href='/details/{{_id}}'">
         <td>{{this.firstName}}</td>
         <td>{{this.lastName}}</td>
-        <td><a href="/delete/{{_id}}">Delete</a></td>
+        <td><a href="/edit/{{_id}}">Edit</a> <a href="/delete/{{_id}}">Delete</a></td>
       </tr>
     {{/each}}
   </tbody>

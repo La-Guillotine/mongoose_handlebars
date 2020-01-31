@@ -57,6 +57,30 @@ module.exports = (controller) => {
       });
     });
   });
+  router.get("/edit/:id",(req,res)=>{
+    const id = req.params.id;
+    controller.getOne(id).then((user) => {
+      res.render('edit', {
+        user,
+      });
+    }).catch((err) => {
+      res.render('error500', { err });
+    });
+  });
+
+  router.post("/edit/:id",(req,res)=>{
+    let id = req.params.id;
+    let user={
+      id :id,
+      firstName:req.body.firstname,
+      lastName:req.body.lastname,
+      email:req.body.email
+    }
+    controller.edit(user).then(()=>{
+      res.redirect('/');
+    });
+    
+  });
 
   return router;
 }

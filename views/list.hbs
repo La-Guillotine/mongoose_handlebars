@@ -8,10 +8,10 @@
   </thead>
   <tbody>
     {{#each users}}
-      <tr onclick="window.location.href='/details/{{this.id}}'">
+      <tr onclick="window.location.href='/details/{{_id}}'">
         <td>{{this.firstName}}</td>
         <td>{{this.lastName}}</td>
-        <td><a href="/delete/{{this.id}}">X</a></td>
+        <td><a href="/delete/{{_id}}">X</a></td>
       </tr>
     {{/each}}
   </tbody>

@@ -1,51 +1,29 @@
-let lastId = 0;
+const User = require('../model/User');
 
-let users = [{
-  id: lastId++,
+User.create({
+  email: 'ldrogo@toto.fr',
   firstName: 'Lucien',
-  lastName: 'DROGO',
-  email: 'ldrogo@toto.fr'
-}, {
-  id: lastId++,
-  firstName: 'Bob',
-  lastName: 'RANDOM',
-  email: 'bvrandom@toto.fr'
-}];
+  lastName: 'DROGO'
+ }, (err, user) => {
+  if (!err) { /* ok */ }
+  
+ });
 
 module.exports = class UsersController {
 
   getAll() {
-    return new Promise((resolve, reject) => {
-      resolve(users);
-    });
+    return User.find().then(users => users.map(user => user.toObject()));
   }
 
   getOne(id) {
-    return new Promise((resolve, reject) => {
-      const user = users.find((u) => u.id === id);
-      if (user) {
-        resolve(user);
-      } else {
-        reject(new Error('User not found'));
-      }
-    });
+    return User.findById(id).then(user =>user.toObject());
   }
 
   create(user) {
-    const newUser = {
-      ...user,
-      id: lastId++
-    }
-    return new Promise((resolve, reject) => {
-      users.push(newUser);
-      resolve(newUser);
-    });
+    return User.create(user).then(u => u.toObject());
   }
 
   delete(id) {
-    return new Promise((resolve, reject) => {
-      users = users.filter((u) => !(u.id === id));
-      resolve(true);
-    });
+    return User.findById(id).then(user => user.remove());
   }
 }

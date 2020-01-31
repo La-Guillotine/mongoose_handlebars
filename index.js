@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const UsersController = require('./controllers/users.controller');
 
@@ -11,6 +12,14 @@ const PORT = 3000;
 
 const usersController = new UsersController();
 const app = express();
+
+const uri = 'mongodb://root:root@localhost:27017';
+mongoose.set("useUnifiedTopology", true );
+mongoose.set("useNewUrlParser", true);
+mongoose.connect(uri, (error) => {
+ if (error) throw error;
+ console.log("ok");
+});
 
 app.engine('.hbs', exphbs({ extname: '.hbs' }));
 app.set('view engine', '.hbs');

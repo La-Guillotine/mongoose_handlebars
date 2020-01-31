@@ -12,7 +12,7 @@ module.exports = (controller) => {
   });
 
   router.get('/details/:id', (req, res) => {
-    const id = +req.params.id;
+    const id = req.params.id;
     controller.getOne(id).then((user) => {
       res.render('details', {
         user,
@@ -32,7 +32,7 @@ module.exports = (controller) => {
   router.post('/', (req, res) => {
     const user = req.body;
     controller.create(user).then((user) => {
-      console.log(`User ${user.id} created`);
+      console.log(`User ${user._id} created`);
       res.redirect('/');
     }).catch((err) => {
       res.render('error500', { err });
@@ -40,7 +40,7 @@ module.exports = (controller) => {
   });
 
   router.get('/delete/:id', (req, res) => {
-    const id = +req.params.id;
+    const id = req.params.id;
     controller.delete(id).then(() => {
       res.redirect('/');
     });

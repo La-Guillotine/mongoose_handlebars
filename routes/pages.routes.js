@@ -49,7 +49,6 @@ module.exports = (controller) => {
   router.post('/search', (req,res) =>{
     let name = req.body.name;
     let search = true;
-    console.log(name);
     controller.getByName(name).then((users) => {
       res.render('list', {
         users,

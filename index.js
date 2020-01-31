@@ -17,8 +17,8 @@ const uri = 'mongodb://root:root@localhost:27017';
 mongoose.set("useUnifiedTopology", true );
 mongoose.set("useNewUrlParser", true);
 mongoose.connect(uri, (error) => {
- if (error) throw error;
- console.log("ok");
+  if (error) throw error;
+  console.log("connexion base de donnée ok");
 });
 
 app.engine('.hbs', exphbs({ extname: '.hbs' }));

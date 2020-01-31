@@ -20,7 +20,6 @@ module.exports = class UsersController {
   }
 
   getByName(name){
-    console.log(name);
     return User.find({lastName : name}).then(users => users.map(user => user.toObject()));
   }
 

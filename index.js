@@ -35,6 +35,4 @@ app.use(express.json());
 app.use("/api/users", usersRoutes(usersController));
 app.use("/", pagesRoutes(usersController));
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`)
-});
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
